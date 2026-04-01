@@ -5,9 +5,14 @@ from predict import CropDiseasePredictor
 from disease_info import get_disease_info, RISK_CONFIG
 
 app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+    
 CORS(app)
 
-UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'uploads')
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10 MB
 
