@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌿 Crop Disease Detector</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle-wrap">
+      <button class="lang-toggle" id="langToggle" title="भाषा बदला / Change Language">
+        <span class="lang-icon">🌐</span>
+        <span id="langLabel">मराठी</span>
+      </button>
+    </div>
+
+    <header>
+      <div class="logo">🌿</div>
+      <h1 data-en="Crop Disease Detector" data-mr="पीक रोग शोधक">Crop Disease Detector</h1>
+      <p class="subtitle"
+         data-en="AI-powered detection for Tomato &amp; Potato leaf diseases"
+         data-mr="टोमॅटो आणि बटाटा पानांच्या रोगांसाठी AI-आधारित शोध">
+        AI-powered detection for Tomato &amp; Potato leaf diseases
+      </p>
+    </header>
+
+    <!-- Upload Zone -->
+    <div class="card upload-zone" id="uploadZone">
+      <div class="upload-icon">📷</div>
+      <p class="upload-title"
+         data-en="Drop a leaf image here"
+         data-mr="येथे पानाची प्रतिमा टाका">
+        Drop a leaf image here
+      </p>
+      <p class="upload-sub"
+         data-en="Supports JPG, PNG, WEBP, BMP — max 10MB"
+         data-mr="JPG, PNG, WEBP, BMP समर्थित — कमाल 10MB">
+        Supports JPG, PNG, WEBP, BMP — max 10MB
+      </p>
+      <input type="file" id="fileInput" accept="image/*" hidden/>
+      <button class="btn-primary" id="uploadBtn"
+              data-en="Choose Image" data-mr="प्रतिमा निवडा">
+        Choose Image
+      </button>
+    </div>
+
+    <!-- Preview -->
+    <div class="card preview-section" id="previewSection" style="display:none">
+      <img id="previewImg" alt="Leaf preview"/>
+      <button class="btn-primary btn-analyze" id="analyzeBtn"
+              data-en="🔍 Analyze Disease" data-mr="🔍 रोग तपासा">
+        🔍 Analyze Disease
+      </button>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading-wrap" id="loading" style="display:none">
+      <div class="spinner"></div>
+      <p data-en="Analyzing your leaf image..." data-mr="आपल्या पानाची प्रतिमा तपासली जात आहे...">
+        Analyzing your leaf image...
+      </p>
+    </div>
+
+    <!-- Result -->
+    <div id="resultCard" style="display:none">
+
+      <!-- Risk Banner -->
+      <div class="risk-banner" id="riskBanner">
+        <span class="risk-emoji" id="riskEmoji"></span>
+        <div>
+          <div class="risk-label" id="riskLabel"></div>
+          <div class="risk-sublabel" id="riskSublabel"></div>
+        </div>
+      </div>
+
+      <!-- Disease Info -->
+      <div class="card result-main">
+        <div class="disease-header">
+          <div>
+            <h2 id="diseaseName"></h2>
+            <span class="crop-tag" id="cropTag"></span>
+          </div>
+          <div class="conf-circle" id="confCircle"></div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-block">
+            <div class="info-icon">📋</div>
+            <div>
+              <h3 data-en="Description" data-mr="वर्णन">Description</h3>
+              <p id="description"></p>
+            </div>
+          </div>
+          <div class="info-block treatment">
+            <div class="info-icon">💊</div>
+            <div>
+              <h3 data-en="Recommended Treatment" data-mr="शिफारस केलेले उपचार">Recommended Treatment</h3>
+              <p id="treatment"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confidence Bar -->
+        <div class="conf-section">
+          <div class="conf-header">
+            <span data-en="Model Confidence" data-mr="मॉडेल आत्मविश्वास">Model Confidence</span>
+            <span id="confText" class="conf-value"></span>
+          </div>
+          <div class="conf-bar">
+            <div class="conf-fill" id="confFill"></div>
+          </div>
+        </div>
+
+        <!-- Top 5 -->
+        <div class="top5-section">
+          <h3 data-en="Top Predictions" data-mr="शीर्ष अंदाज">Top Predictions</h3>
+          <div id="top5List"></div>
+        </div>
+      </div>
+
+      <button class="btn-secondary" id="resetBtn"
+              data-en="🔄 Analyze Another Image" data-mr="🔄 दुसरी प्रतिमा तपासा">
+        🔄 Analyze Another Image
+      </button>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
