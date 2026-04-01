@@ -16,7 +16,9 @@ UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10 MB
 
+
 predictor = CropDiseasePredictor()
+print("🚀 Predictor initialized successfully")
 
 ALLOWED = {'png', 'jpg', 'jpeg', 'webp', 'bmp'}
 
